@@ -9,7 +9,11 @@ type Props = {
   initialState?: CardData;
 };
 const MainScreen = ({ onSave, initialState = defaultPaymentData }: Props) => {
-  const [state, setState] = useState({ ...initialState, isCardFlipped: false });
+  const [state, setState] = useState({
+    ...initialState,
+    cardHolder: 'CARD HOLDER',
+    isCardFlipped: false,
+  });
   const [currentFocusedElm, setCurrentFocusedElm] = useState(null);
 
   const updateStateValues = useCallback(

@@ -84,22 +84,6 @@ export default function CForm({
           />
         </div>
 
-        <div className="card-input">
-          <label htmlFor="cardName" className="card-input__label">
-            Card Holder
-          </label>
-          <input
-            type="text"
-            className="card-input__input"
-            autoComplete="off"
-            name="cardHolder"
-            onChange={handleFormChange}
-            ref={cardHolderRef}
-            onFocus={(e) => onCardInputFocus(e, 'cardHolder')}
-            onBlur={onCardInputBlur}
-          />
-        </div>
-
         <div className="card-form__row">
           <div className="card-form__col">
             <div className="card-form__group">

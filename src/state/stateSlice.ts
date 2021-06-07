@@ -74,6 +74,9 @@ export const {
   fillConfirmationData,
 } = sunscriptionSlice.actions;
 
+export const selectState = (state: RootState) => state.subscription;
+export const selectConfirmationData = (state: RootState) =>
+  state.subscription.confirmationData;
 export const selectStage = (state: RootState) => state.subscription.stage;
 export const selectPaymentData = (state: RootState) =>
   state.subscription.paymentData;

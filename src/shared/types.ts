@@ -16,7 +16,6 @@ export type ConfirmationSettings = {
 };
 export type CardData = {
   cardNumber: string;
-  cardHolder: string;
   cardMonth: string;
   cardYear: string;
   cardCvv: string;

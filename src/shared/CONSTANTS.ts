@@ -8,7 +8,6 @@ const defaultSubscriptionSettings: SubscriptionSettings = {
 
 const defaultPaymentData: CardData = {
   cardNumber: '#### #### #### ####',
-  cardHolder: 'FULL NAME',
   cardMonth: '',
   cardYear: '',
   cardCvv: '',
