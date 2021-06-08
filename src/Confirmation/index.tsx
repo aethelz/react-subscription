@@ -1,21 +1,29 @@
 import styles from './confirmation.module.scss';
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useAppSelector, useAppDispatch } from '../state/hooks';
+import { store } from '../state/store';
 import {
   fillConfirmationData,
-  selectState,
   selectConfirmationData,
 } from '../state/stateSlice';
 import { postData } from '../shared/api';
+import type { WithNavigation } from '../shared/types';
 
-const Confirmation = () => {
-  const state = useAppSelector(selectState);
+type Props = {} & WithNavigation;
+const Confirmation = ({ navigation }: Props) => {
+  const emailRef = useRef<HTMLInputElement>(null);
+  const [emailValid, setEmailValid] = useState(false);
   const confirmationData = useAppSelector(selectConfirmationData);
   const dispatch = useAppDispatch();
   const [termsAgreement, setTermsAgreement] = useState(
     confirmationData?.termsAgreement ?? true,
   );
+
   const [email, setEmail] = useState(confirmationData?.email ?? '');
+  useEffect(() => {
+    if (!emailRef.current) return;
+    setEmailValid(emailRef.current.checkValidity());
+  }, [email]);
   return (
     <div className={styles.wrapper}>
       <label>
@@ -34,21 +42,25 @@ const Confirmation = () => {
         <input
           type="email"
           value={email}
+          ref={emailRef}
           onChange={({ currentTarget: { value } }) => setEmail(value)}
-          pattern=".+@test.com"
           size={30}
           required
         />
       </label>
-      <button
-        disabled={!termsAgreement || !email.length}
-        onClick={() => {
-          postData(state);
+
+      {navigation({
+        formFilled: termsAgreement && emailValid,
+        onPrevious: () => {
           dispatch(fillConfirmationData({ email, termsAgreement }));
-        }}
-      >
-        CONFIRM
-      </button>
+        },
+        onNext: () => {
+          dispatch(fillConfirmationData({ email, termsAgreement }));
+          // If we use selector, we will get stale confirmation data in store,
+          // using getState is the simplest fix for this
+          postData(store.getState().subscription);
+        },
+      })}
     </div>
   );
 };

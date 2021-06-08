@@ -1,3 +1,4 @@
+import type {Props as NavigationProps} from '../Navigation';
 export type SubscriptionEntry = {
   duration_months: number;
   price_usd_per_gb: number;
@@ -20,10 +21,18 @@ export type CardData = {
   cardYear: string;
   cardCvv: string;
 };
+export type InternalCardData = CardData & {
+  isCardFlipped: boolean;
+  cardHolder: string;
+};
 export type Stage = 'selection' | 'payment' | 'confirmation';
 export type State = {
   stage: Stage;
-  subscriptionData: SubscriptionSettings | null;
+  subscriptionData: SubscriptionSettings;
   paymentData: CardData | null;
   confirmationData: ConfirmationSettings | null;
+};
+export type RenderNavigation = (p: NavigationProps) => JSX.Element;
+export type WithNavigation = {
+  navigation: RenderNavigation;
 };

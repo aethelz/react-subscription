@@ -1,19 +1,14 @@
 import { useState, useRef, useCallback } from 'react';
 import CForm from './components/form';
 import Card from './components/card';
-import type { CardData } from '../../shared/types';
-import { defaultPaymentData } from '../../shared/CONSTANTS';
+import type { InternalCardData } from '../../shared/types';
 
 type Props = {
-  onSave: (v: CardData) => void;
-  initialState?: CardData;
+  state: InternalCardData;
+  setState: (s: InternalCardData) => void;
+  initialState: InternalCardData;
 };
-const MainScreen = ({ onSave, initialState = defaultPaymentData }: Props) => {
-  const [state, setState] = useState({
-    ...initialState,
-    cardHolder: 'CARD HOLDER',
-    isCardFlipped: false,
-  });
+const MainScreen = ({ state, setState, initialState }: Props) => {
   const [currentFocusedElm, setCurrentFocusedElm] = useState(null);
 
   const updateStateValues = useCallback(
@@ -58,19 +53,14 @@ const MainScreen = ({ onSave, initialState = defaultPaymentData }: Props) => {
     setCurrentFocusedElm(null);
   }, []);
 
-  const doSubmit = () => {
-    onSave(state);
-  };
-
   return (
     <div className="wrapper">
       <CForm
-        handleSubmit={doSubmit}
         cardMonth={state.cardMonth}
         cardYear={state.cardYear}
+        _cardNumber={state.cardNumber}
         onUpdateState={updateStateValues}
         cardNumberRef={formFieldsRefObj.cardNumber}
-        cardHolderRef={formFieldsRefObj.cardHolder}
         cardDateRef={formFieldsRefObj.cardDate}
         cardCvv={formFieldsRefObj.cardCvv}
         onCardInputFocus={onCardFormInputFocus}

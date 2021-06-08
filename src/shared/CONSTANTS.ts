@@ -3,7 +3,7 @@ import type { SubscriptionSettings, CardData } from './types';
 const defaultSubscriptionSettings: SubscriptionSettings = {
   duration: 12,
   gbSize: 5,
-  upfrontPayment: true,
+  upfrontPayment: false,
 };
 
 const defaultPaymentData: CardData = {

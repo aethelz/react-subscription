@@ -102,7 +102,7 @@ const Card = ({
 
         <div className="card-item__wrapper">
           <div className="card-item__top">
-            <img src={'/chip.png'} alt="" className="card-item__chip" />
+            <img src="/chip.png" alt="" className="card-item__chip" />
             <div className="card-item__type">
               <img
                 alt={useCardType}

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { defaultPaymentData } from '../../../../shared/CONSTANTS';
+import './styles.scss';
 
 const currentYear = new Date().getFullYear();
 const monthsArr = Array.from({ length: 12 }, (x, i) => {
@@ -8,19 +10,20 @@ const monthsArr = Array.from({ length: 12 }, (x, i) => {
 const yearsArr = Array.from({ length: 9 }, (_x, i) => currentYear + i);
 
 export default function CForm({
-  handleSubmit,
   cardMonth,
   cardYear,
   onUpdateState,
   cardNumberRef,
-  cardHolderRef,
   cardDateRef,
   onCardInputFocus,
   onCardInputBlur,
   cardCvv,
+  _cardNumber,
   children,
 }) {
-  const [cardNumber, setCardNumber] = useState('');
+  const [cardNumber, setCardNumber] = useState(
+    _cardNumber === defaultPaymentData.cardNumber ? '' : _cardNumber,
+  );
 
   const handleFormChange = (event) => {
     const { name, value } = event.target;
@@ -137,7 +140,7 @@ export default function CForm({
               <input
                 type="tel"
                 className="card-input__input"
-                maxLength="4"
+                maxLength="3"
                 autoComplete="off"
                 name="cardCvv"
                 onChange={handleFormChange}
@@ -147,11 +150,6 @@ export default function CForm({
               />
             </div>
           </div>
-        </div>
-        <div className="card-form__row">
-          <button onClick={handleSubmit} className="card-input__input">
-            Save
-          </button>
         </div>
       </div>
     </div>

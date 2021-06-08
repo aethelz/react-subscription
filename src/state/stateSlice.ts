@@ -6,10 +6,11 @@ import type {
   ConfirmationSettings,
   CardData,
 } from '../shared/types';
+import { defaultSubscriptionSettings } from '../shared/CONSTANTS';
 
 const initialState: State = {
   stage: 'selection',
-  subscriptionData: null,
+  subscriptionData: defaultSubscriptionSettings,
   paymentData: null,
   confirmationData: null,
 };
@@ -74,9 +75,10 @@ export const {
   fillConfirmationData,
 } = sunscriptionSlice.actions;
 
-export const selectState = (state: RootState) => state.subscription;
 export const selectConfirmationData = (state: RootState) =>
   state.subscription.confirmationData;
+export const selectSubscriptionData = (state: RootState) =>
+  state.subscription.subscriptionData;
 export const selectStage = (state: RootState) => state.subscription.stage;
 export const selectPaymentData = (state: RootState) =>
   state.subscription.paymentData;
