@@ -29,7 +29,7 @@ const Navigation = ({
   const stage = useAppSelector(selectStage);
 
   return (
-    <div className="buttons is-justify-content-space-between mt-3">
+    <div className="buttons is-justify-content-space-between mt-5">
       <button
         className="button is-primary is-outlined"
         disabled={stage === 'selection'}

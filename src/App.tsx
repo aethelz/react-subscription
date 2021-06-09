@@ -6,15 +6,17 @@ import Navigation from './Navigation';
 
 function App() {
   return (
-    <section className="hero is-fullheight">
-      <div className="hero-body">
-        <div className="container is-max-desktop box">
-            <div className="has-text-centered m-5">
-              <h3 className="title">Set up cloud storage subscription</h3>
+    <section className="section">
+      <div className="container">
+        <div className="columns is-centered">
+          <div className="column is-6 is-5-desktop">
+            <div className="has-text-centered">
+              <h1 className="title is-2">Cloud storage subscription</h1>
             </div>
             <SelectedPlan />
             <CurrentStage navigation={(props) => <Navigation {...props} />} />
           </div>
+        </div>
       </div>
     </section>
   );
