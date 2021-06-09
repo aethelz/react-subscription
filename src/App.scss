@@ -13,12 +13,3 @@ body {
     outline: none;
   }
 }
-.wrapper {
-  min-height: 100vh;
-  display: flex;
-  padding: 50px 15px;
-  @media screen and (max-width: 700px), (max-height: 500px) {
-    flex-wrap: wrap;
-    flex-direction: column;
-  }
-}

@@ -3,7 +3,7 @@ import type { SubscriptionPlans, SubscriptionSettings } from './types';
 import { fetchPrices } from './api';
 
 type HookReturn = {
-  totalPrice: string;
+  totalPrice: number;
   pricePerGb: number;
 } | null;
 export default function usePrice(
@@ -29,7 +29,7 @@ export default function usePrice(
 
     if (!pricePerGb) return null;
 
-    const totalPrice = pricePerGb * gbSize * duration * (1 - discount) + 'EUR';
+    const totalPrice = pricePerGb * gbSize * duration * (1 - discount);
 
     return { totalPrice, pricePerGb };
   }

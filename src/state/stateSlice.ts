@@ -27,6 +27,11 @@ export const sunscriptionSlice = createSlice({
               state.stage = 'payment';
             } else {
               state.stage = 'confirmation';
+              // Flush payment details in case user changes his mind about
+              // upfront payment
+              if (!state.subscriptionData.upfrontPayment) {
+                state.paymentData = null;
+              }
             }
           }
           break;

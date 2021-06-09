@@ -6,6 +6,9 @@ const defaultSubscriptionSettings: SubscriptionSettings = {
   upfrontPayment: false,
 };
 
+const durationOptions = [3, 6, 12];
+const gbSizeOptions = [5, 10, 50];
+
 const defaultPaymentData: CardData = {
   cardNumber: '#### #### #### ####',
   cardMonth: '',
@@ -13,4 +16,9 @@ const defaultPaymentData: CardData = {
   cardCvv: '',
 };
 
-export { defaultSubscriptionSettings, defaultPaymentData };
+export {
+  defaultSubscriptionSettings,
+  defaultPaymentData,
+  durationOptions,
+  gbSizeOptions,
+};

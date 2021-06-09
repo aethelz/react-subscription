@@ -1,14 +1,12 @@
-import styles from './currentStage.module.scss';
 import { useAppSelector } from '../state/hooks';
 import { selectStage } from '../state/stateSlice';
 import Selection from '../Selection';
 import Payment from '../Payment';
 import Confirmation from '../Confirmation';
-import Navigation from '../Navigation';
-import type { RenderNavigation } from '../shared/types';
+import type { WithNavigation } from '../shared/types';
 
-const CurrentStage = () => {
-  const navigation: RenderNavigation = (props) => <Navigation {...props} />;
+type Props = {} & WithNavigation;
+const CurrentStage = ({ navigation }: Props) => {
   const stage = useAppSelector(selectStage);
   switch (stage) {
     case 'selection':

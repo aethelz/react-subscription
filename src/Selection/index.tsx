@@ -4,7 +4,9 @@ import {
   fillSubscriptionData,
   selectSubscriptionData,
 } from '../state/stateSlice';
+import Options from './Options';
 import type { WithNavigation } from '../shared/types';
+import { durationOptions, gbSizeOptions } from '../shared/CONSTANTS';
 
 type Props = {} & WithNavigation;
 const Selection = ({ navigation }: Props) => {
@@ -16,51 +18,37 @@ const Selection = ({ navigation }: Props) => {
 
   useEffect(() => {
     dispatch(fillSubscriptionData({ duration, gbSize, upfrontPayment }));
-  }, [gbSize, duration, upfrontPayment]);
+  }, [dispatch, gbSize, duration, upfrontPayment]);
   return (
-    <header className={styles.wrapper}>
-      <label>
-        Duration
-        <select
-          value={duration}
-          onChange={({ currentTarget: { value } }) =>
-            setDuration(Number(value))
-          }
-        >
-          {[3, 6, 12].map((v) => (
-            <option value={v} key={v}>
-              {v}
-            </option>
-          ))}
-        </select>
-      </label>
+    <>
+      <Options
+        values={durationOptions}
+        selected={duration}
+        onChange={setDuration}
+        unit="months"
+      />
+      <Options
+        values={gbSizeOptions}
+        selected={gbSize}
+        onChange={setGbSize}
+        unit="GB"
+      />
 
-      <label>
-        Gigabytes
-        <select
-          value={gbSize}
-          onChange={({ currentTarget: { value } }) => setGbSize(Number(value))}
-        >
-          {[5, 10, 50].map((v) => (
-            <option value={v} key={v}>
-              {v}
-            </option>
-          ))}
-        </select>
-      </label>
-
-      <label>
-        Upfront Payment
-        <input
-          type="checkbox"
-          checked={upfrontPayment}
-          onChange={({ currentTarget: { checked } }) =>
-            setUpfrontPayment(checked)
-          }
-        />
-      </label>
+      <div className="has-text-centered">
+        <label className="checkbox">
+          <input
+            type="checkbox"
+            checked={upfrontPayment}
+            onChange={({ currentTarget: { checked } }) =>
+              setUpfrontPayment(checked)
+            }
+          />
+          <span className="title is-5 ml-2">Pay Upfront</span>
+        </label>
+      </div>
 
       {navigation({})}
+    </>
   );
 };
 
