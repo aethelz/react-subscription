@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/react-subscription/static/css/main.76490f30.chunk.css",
+    "main.js": "/react-subscription/static/js/main.359f89cf.chunk.js",
+    "main.js.map": "/react-subscription/static/js/main.359f89cf.chunk.js.map",
+    "runtime-main.js": "/react-subscription/static/js/runtime-main.14d1ac10.js",
+    "runtime-main.js.map": "/react-subscription/static/js/runtime-main.14d1ac10.js.map",
+    "static/css/2.a9733831.chunk.css": "/react-subscription/static/css/2.a9733831.chunk.css",
+    "static/js/2.7b80e774.chunk.js": "/react-subscription/static/js/2.7b80e774.chunk.js",
+    "static/js/2.7b80e774.chunk.js.map": "/react-subscription/static/js/2.7b80e774.chunk.js.map",
+    "index.html": "/react-subscription/index.html",
+    "static/css/2.a9733831.chunk.css.map": "/react-subscription/static/css/2.a9733831.chunk.css.map",
+    "static/css/main.76490f30.chunk.css.map": "/react-subscription/static/css/main.76490f30.chunk.css.map",
+    "static/js/2.7b80e774.chunk.js.LICENSE.txt": "/react-subscription/static/js/2.7b80e774.chunk.js.LICENSE.txt",
+    "static/media/all.css": "/react-subscription/static/media/fa-solid-900.efbd5d20.eot"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.14d1ac10.js",
+    "static/css/2.a9733831.chunk.css",
+    "static/js/2.7b80e774.chunk.js",
+    "static/css/main.76490f30.chunk.css",
+    "static/js/main.359f89cf.chunk.js"
+  ]
+}
