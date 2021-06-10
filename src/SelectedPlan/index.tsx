@@ -26,7 +26,7 @@ const Confirmation = () => {
         <div className="level-item has-text-centered">
           <div>
             <p className="heading">Duration</p>
-            <p className="title">{duration} month</p>
+            <p className="title">{duration} months</p>
           </div>
         </div>
         <div className="level-item has-text-centered">

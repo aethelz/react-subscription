@@ -22,23 +22,15 @@ export const sunscriptionSlice = createSlice({
     nextStage: (state) => {
       switch (state.stage) {
         case 'selection':
-          if (state.subscriptionData) {
-            if (state.subscriptionData.upfrontPayment) {
-              state.stage = 'payment';
-            } else {
-              state.stage = 'confirmation';
-              // Flush payment details in case user changes his mind about
-              // upfront payment
-              if (!state.subscriptionData.upfrontPayment) {
-                state.paymentData = null;
-              }
-            }
-          }
+          state.stage = 'payment';
           break;
         case 'payment':
           if (state.paymentData) {
             state.stage = 'confirmation';
           }
+          break;
+        default:
+          console.log('no-op');
       }
     },
     previousStage: (state) => {
@@ -47,11 +39,10 @@ export const sunscriptionSlice = createSlice({
           state.stage = 'selection';
           break;
         case 'confirmation':
-          if (state.paymentData) {
-            state.stage = 'payment';
-          } else {
-            state.stage = 'selection';
-          }
+          state.stage = 'payment';
+          break;
+        default:
+          console.log('no-op');
       }
     },
     fillSubscriptionData: (
