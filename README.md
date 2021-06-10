@@ -1,46 +1,39 @@
-# Getting Started with Create React App
+## React - Cloud Storage Subscription
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Description
 
-## Available Scripts
+This is my solution to a take-home assignment done in 4 days in spare time.<br />
+It features a finished React + TypeScript app with basic Redux setup and Bulma styling.<br />
+Paycard is based on [Interactive React Paycard](https://github.com/jasminmif/react-interactive-paycard) project.
 
-In the project directory, you can run:
+### Task
 
-### `npm start`
+The subscription order process has 3 steps:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Select subscription parameters:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+   * Duration: 3/6/12 Months (default: 12)
+   * Amount of gigabytes in a cloud: 5/10/50 (default: 5)
+   * Upfront payment: yes/no (default: no)
 
-### `npm test`
+2. Payment data:
+   * Credit card number
+   * Credit card expiration date
+   * Credit card security code
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Confirmation
+   * Summary of the selected subscription including total price and price per GB.
+   * Email of the user
+   * Terms and conditions agreement checkbox
+   * Confirmation button
 
-### `npm run build`
+### Requirements
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+* If the user selects upfront payment, the total price should be reduced by 10%
+* Upfront payment does not change anything on the UI and flow but only adds the discount.
+* Current selected subscription and final price should be shown on every step
+* Subscription prices should be retrieved from https://cloud-storage-prices-moberries.herokuapp.com/prices
+* All parameters should be required
+* It should be possible to change steps by clicking on the Next or Back button.
+* Every step needs to be completed in order to see the next one.
+* Confirm button click handler should send data to the API endpoint https://httpbin.org/post
