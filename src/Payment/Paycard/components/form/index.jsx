@@ -17,18 +17,29 @@ export default function CForm({
   cardDateRef,
   onCardInputFocus,
   onCardInputBlur,
-  cardCvv,
+  cardCvvRef,
   _cardNumber,
+  _cardCvv,
   children,
 }) {
   const [cardNumber, setCardNumber] = useState(
     _cardNumber === defaultPaymentData.cardNumber ? '' : _cardNumber,
   );
 
+  const [cardCvv, setCardCvv] = useState(_cardCvv);
+
   const handleFormChange = (event) => {
     const { name, value } = event.target;
 
     onUpdateState(name, value);
+  };
+
+  const onCVVNumberChange = (event) => {
+    let { name, value } = event.target;
+
+    const sanitizedCvv = value.replace(/\D/g, '')
+    setCardCvv(sanitizedCvv);
+    onUpdateState(name, sanitizedCvv);
   };
 
   // TODO: We can improve the regex check with a better approach like in the card component.
@@ -143,10 +154,11 @@ export default function CForm({
                 maxLength="3"
                 autoComplete="off"
                 name="cardCvv"
-                onChange={handleFormChange}
+                onChange={onCVVNumberChange}
                 onFocus={onCvvFocus}
                 onBlur={onCvvBlur}
-                ref={cardCvv}
+                ref={cardCvvRef}
+                value={cardCvv}
               />
             </div>
           </div>

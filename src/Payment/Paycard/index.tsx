@@ -59,10 +59,11 @@ const MainScreen = ({ state, setState, initialState }: Props) => {
         cardMonth={state.cardMonth}
         cardYear={state.cardYear}
         _cardNumber={state.cardNumber}
+        _cardCvv={state.cardCvv}
         onUpdateState={updateStateValues}
         cardNumberRef={formFieldsRefObj.cardNumber}
         cardDateRef={formFieldsRefObj.cardDate}
-        cardCvv={formFieldsRefObj.cardCvv}
+        cardCvvRef={formFieldsRefObj.cardCvv}
         onCardInputFocus={onCardFormInputFocus}
         onCardInputBlur={onCardInputBlur}
       >
