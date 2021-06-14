@@ -15,7 +15,7 @@ const initialState: State = {
   confirmationData: null,
 };
 
-export const sunscriptionSlice = createSlice({
+export const subscriptionSlice = createSlice({
   name: 'subscription',
   initialState,
   reducers: {
@@ -51,6 +51,24 @@ export const sunscriptionSlice = createSlice({
     ) => {
       state.subscriptionData = action.payload;
     },
+    updateDuration: (
+      state,
+      action: PayloadAction<number>,
+    ) => {
+      state.subscriptionData.duration = action.payload;
+    },
+    updateGbSize: (
+      state,
+      action: PayloadAction<number>,
+    ) => {
+      state.subscriptionData.gbSize = action.payload;
+    },
+    updateUpfrontPayment: (
+      state,
+      action: PayloadAction<boolean>,
+    ) => {
+      state.subscriptionData.upfrontPayment = action.payload;
+    },
     fillPaymentData: (state, action: PayloadAction<CardData>) => {
       state.paymentData = action.payload;
     },
@@ -69,7 +87,10 @@ export const {
   fillSubscriptionData,
   fillPaymentData,
   fillConfirmationData,
-} = sunscriptionSlice.actions;
+  updateUpfrontPayment,
+  updateDuration,
+  updateGbSize,
+} = subscriptionSlice.actions;
 
 export const selectConfirmationData = (state: RootState) =>
   state.subscription.confirmationData;
@@ -79,4 +100,4 @@ export const selectStage = (state: RootState) => state.subscription.stage;
 export const selectPaymentData = (state: RootState) =>
   state.subscription.paymentData;
 
-export default sunscriptionSlice.reducer;
+export default subscriptionSlice.reducer;

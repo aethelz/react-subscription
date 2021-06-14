@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../state/hooks';
 import {
-  fillSubscriptionData,
+  updateDuration,
+  updateGbSize,
+  updateUpfrontPayment,
   selectSubscriptionData,
 } from '../state/stateSlice';
 import Options from './Options';
@@ -11,14 +12,14 @@ import { durationOptions, gbSizeOptions } from '../shared/CONSTANTS';
 type Props = {} & WithNavigation;
 const Selection = ({ navigation }: Props) => {
   const dispatch = useAppDispatch();
-  const planData = useAppSelector(selectSubscriptionData);
-  const [duration, setDuration] = useState(planData.duration);
-  const [gbSize, setGbSize] = useState(planData.gbSize);
-  const [upfrontPayment, setUpfrontPayment] = useState(planData.upfrontPayment);
+  const { duration, gbSize, upfrontPayment } = useAppSelector(
+    selectSubscriptionData,
+  );
+  const setGbSize = (size: number) => dispatch(updateGbSize(size));
+  const setDuration = (duration: number) => dispatch(updateDuration(duration));
+  const setUpfrontPayment = (isUpfront: boolean) =>
+    dispatch(updateUpfrontPayment(isUpfront));
 
-  useEffect(() => {
-    dispatch(fillSubscriptionData({ duration, gbSize, upfrontPayment }));
-  }, [dispatch, gbSize, duration, upfrontPayment]);
   return (
     <>
       <Options
